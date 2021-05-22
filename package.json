@@ -1,0 +1,26 @@
+{
+  "title": "Material demo",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "main": "index.tsx",
+  "devDependencies": {
+    "react-scripts": "latest"
+  },
+  "description": "https://github.com/mui-org/material-ui/blob/master/docs/src/pages/components/cards/MediaCard.tsx",
+  "dependencies": {
+    "@material-ui/core": "latest",
+    "@material-ui/icons": "4.11.2",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "clsx": "1.1.1",
+    "react": "latest",
+    "react-dom": "latest",
+    "typescript": "latest"
+  },
+  "name": "material-demo-forked",
+  "version": "0.0.0"
+}
