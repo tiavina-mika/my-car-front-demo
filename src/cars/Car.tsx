@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -11,7 +12,6 @@ import { grey } from '@material-ui/core/colors';
 
 import { Car as CarType } from '../types/car';
 import Comments from '../comments/Comments';
-import clsx from 'clsx';
 import { CommentFormValues } from '../types/comment';
 
 const useStyles = makeStyles((theme: Theme) => ({
