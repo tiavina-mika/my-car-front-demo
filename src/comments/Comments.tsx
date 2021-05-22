@@ -2,14 +2,12 @@ import React from 'react';
 import clsx from 'clsx';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
 import { Box, Button, ListSubheader } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
+
+import { Comment as CommentType } from '../types/comment';
+import Comment from './Comment';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,9 +17,6 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingBottom: 0,
       paddingTop: theme.spacing(1),
       borderTop: '1px solid ' + grey[300],
-    },
-    inline: {
-      display: 'inline',
     },
     button: {
       textTransform: 'initial',
@@ -39,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-type Props = { comments?: any[] };
+type Props = { comments?: CommentType[] };
 const Comments = ({ comments }: Props) => {
   const classes = useStyles();
 
@@ -60,38 +55,12 @@ const Comments = ({ comments }: Props) => {
         </ListSubheader>
       }
     >
-      {comments.map((comment: any, index: number) => (
+      {comments.map((comment: CommentType, index: number) => (
         <>
           {/* -----------------------------------------  */}
           {/* ------------ comments details ------------ */}
           {/* -----------------------------------------  */}
-          <ListItem alignItems="flex-start" key={comment.id}>
-              <ListItemAvatar>
-                <Avatar alt={comment.postedBy.name} src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar>
-              <ListItemText
-                primary={
-                  <Box display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography
-                      variant="subtitle1"
-                      className={classes.inline}
-                      color="textPrimary"
-                    >
-                      {comment.postedBy.name}
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      className={classes.inline}
-                      color="textPrimary"
-                    >
-                      {comment.updatedAt}
-                    </Typography>
-                  </Box>
-                }
-                secondary={comment.text}
-              />
-            </ListItem>
+            <Comment comment={comment} key={comment.id} />
 
             {/* --------------------------------------- */}
             {/* ------------ button actions ----------- */}
