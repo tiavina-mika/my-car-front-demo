@@ -57,12 +57,14 @@ const CommentForm = ({ onSave, defaultValue }: Props) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm<CommentFormValues>();
 
   const onSubmit: SubmitHandler<CommentFormValues> = (values: CommentFormValues) => {
     // console.log(values);
     onSave(values);
+    reset(values);
   };
 
   return (

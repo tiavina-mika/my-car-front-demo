@@ -5,9 +5,10 @@ import Divider from '@material-ui/core/Divider';
 import { ListSubheader } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 
-import { Comment as CommentType } from '../types/comment';
+import { Comment as CommentType, CommentFormValues } from '../types/comment';
 import Comment from './Comment';
 import ButtonActions from './ButtonsAction';
+import CommentForm from './CommentForm';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -34,17 +35,13 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-type Props = { comments?: CommentType[] };
-const Comments = ({ comments }: Props) => {
+type Props = { 
+  comments?: CommentType[]; 
+  onAdd: (values: CommentFormValues) => void 
+};
+
+const Comments = ({ comments, onAdd }: Props) => {
   const classes = useStyles();
-
-  const handleDelete = (id: string) => {
-    console.log(id);
-  }
-
-  const handleEdit = (id: string) => {
-    console.log(id);
-  }
 
   return (
     <List
@@ -55,11 +52,12 @@ const Comments = ({ comments }: Props) => {
         </ListSubheader>
       }
     >
-      {comments.map((comment: CommentType, index: number) => (
+      <CommentForm onSave={onAdd} />
+      {comments && comments.length && comments.map((comment: CommentType, index: number) => (
         <Fragment key={comment.id}>
-          {/* -----------------------------------------  */}
-          {/* ------------ comments details ------------ */}
-          {/* -----------------------------------------  */}
+            {/* -----------------------------------------  */}
+            {/* ------------ comments details ------------ */}
+            {/* -----------------------------------------  */}
             <Comment comment={comment}  />
 
             {/* --------------------------------------- */}
