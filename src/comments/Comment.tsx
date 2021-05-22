@@ -4,11 +4,12 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
+import MUIAvatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { Box } from '@material-ui/core';
 
 import { Comment as CommentType} from '../types/comment';
+import Avatar from './Avatar';
 
 const useStyles = makeStyles(
   createStyles({
@@ -25,7 +26,8 @@ const Comment = ({ comment }: Props) => {
   return (
       <ListItem alignItems="flex-start" key={comment.id}>
           <ListItemAvatar>
-            <Avatar alt={comment.postedBy.name} src="/static/images/avatar/1.jpg" />
+            {/* <MUIAvatar alt={comment.postedBy.name} src="/static/images/avatar/1.jpg" /> */}
+            <Avatar text="t" />
           </ListItemAvatar>
           <ListItemText
             primary={

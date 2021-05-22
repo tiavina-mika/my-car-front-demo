@@ -19,6 +19,7 @@
     "clsx": "1.1.1",
     "react": "latest",
     "react-dom": "latest",
+    "react-hook-form": "7.6.4",
     "typescript": "latest"
   },
   "name": "material-demo-forked",

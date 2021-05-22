@@ -8,6 +8,7 @@ import { grey } from '@material-ui/core/colors';
 
 import { Comment as CommentType } from '../types/comment';
 import Comment from './Comment';
+import ButtonActions from './ButtonsAction';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -65,20 +66,7 @@ const Comments = ({ comments }: Props) => {
             {/* --------------------------------------- */}
             {/* ------------ button actions ----------- */}
             {/* --------------------------------------- */}
-            <Box mt={-3} mb={1} display="flex" justifyContent="flex-end">
-              <Button
-                onClick={() => handleDelete(comment.id)} 
-                className={clsx(classes.button, classes.firstButton)}
-              >
-                Supprimer
-              </Button>
-              <Button
-                onClick={() => handleEdit(comment.id)}
-                className={classes.button}
-              >
-                Modifier
-              </Button>
-            </Box>
+            <ButtonActions id={comment.id} />
 
             {/* -------------------------------- */}
             {/* ------------ divider ----------- */}
