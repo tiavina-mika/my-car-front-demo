@@ -1,9 +1,8 @@
-import React from 'react';
-import clsx from 'clsx';
+import React, { Fragment } from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
-import { Box, Button, ListSubheader } from '@material-ui/core';
+import { ListSubheader } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 
 import { Comment as CommentType } from '../types/comment';
@@ -57,23 +56,23 @@ const Comments = ({ comments }: Props) => {
       }
     >
       {comments.map((comment: CommentType, index: number) => (
-        <>
+        <Fragment key={comment.id}>
           {/* -----------------------------------------  */}
           {/* ------------ comments details ------------ */}
           {/* -----------------------------------------  */}
-            <Comment comment={comment} key={comment.id} />
+            <Comment comment={comment}  />
 
             {/* --------------------------------------- */}
             {/* ------------ button actions ----------- */}
             {/* --------------------------------------- */}
-            <ButtonActions id={comment.id} />
+            <ButtonActions id={comment.id} text={comment.text} />
 
             {/* -------------------------------- */}
             {/* ------------ divider ----------- */}
             {/* -------------------------------- */}
             {comments.length - 1 !== index && <Divider variant="inset" component="li" />}
 
-          </>
+          </Fragment>
       ))}
       
     </List>

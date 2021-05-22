@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import clsx from 'clsx';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import { Box, Button } from '@material-ui/core';
@@ -24,21 +24,21 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-type Props = { id: string };
-const ButtonActions = ({ id }: Props) => {
+type Props = { id: string; text?: string; };
+const ButtonActions = ({ id, text }: Props) => {
   const classes = useStyles();
   const [open, setOpen] = useState<boolean>(false);
 
-  const toggle = () => setOpen(prev => !prev);
+  const toggle = useCallback(() => setOpen(prev => !prev), [setOpen]);
 
   const handleDelete = (id: string) => {
     console.log(id);
   }
 
-  const handleEdit = (values: CommentFormValues) => {
-    console.log(id, values);
+  const handleEdit = useCallback((values: CommentFormValues) => {
+    console.log({ id, values });
     toggle();
-  }
+  }, [id, toggle]);
 
   return (
     <Box mt={-3} mb={1}>
@@ -50,7 +50,6 @@ const ButtonActions = ({ id }: Props) => {
           Supprimer
         </Button>
         <Button
-          // onClick={() => handleEdit(id)}
           onClick={toggle}
           className={classes.button}
         >
@@ -58,7 +57,7 @@ const ButtonActions = ({ id }: Props) => {
         </Button>
       </Box>
 
-      {open && <CommentForm onSave={handleEdit} />}
+      {open && <CommentForm onSave={handleEdit} defaultValue={text} />}
     </Box>
   );
 }

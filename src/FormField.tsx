@@ -20,6 +20,7 @@ type Props = {
   inputClassName?: string;
   options?: any;
   register: any;
+  defaultValue: string;
   type?: any;
   errors?: any;
   errorMessage?: string;
@@ -44,6 +45,7 @@ const FormField = ({
   fullWidth = true,
   variant = 'outlined',
   placeholder,
+  defaultValue,
 }: Props) => {
   const classes = useStyles();
 
@@ -62,6 +64,7 @@ const FormField = ({
         fullWidth={fullWidth}
         variant={variant}
         placeholder={placeholder}
+        defaultValue={defaultValue}
         {...register(name, { ...options, required })}
       />
       {errors[name] && (

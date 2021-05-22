@@ -49,6 +49,15 @@ const comments: any[] = [
       name: 'Tatiana Maria Ramanantsalama',
     }
   },
+  {
+    id: '3',
+    text: 'Some comment 3 there',
+    updatedAt: '8h',
+    postedBy: {
+      id: '3',
+      name: 'Tanteraka Mario Ralainirina',
+    }
+  },
 ];
 
 const Home = () => {
@@ -89,7 +98,7 @@ const Home = () => {
                 <Box
                   key={index} 
                   borderLeft={index !== 0 ? 1: 0} 
-                  className={index !== 0 && classes.tag}
+                  className={index !== 0 ? classes.tag: undefined}
                 >
                   <Typography>
                     {info}

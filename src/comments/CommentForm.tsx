@@ -44,8 +44,12 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-type Props = { onSave: (values: CommentFormValues) => void };
-const CommentForm = ({ onSave }: Props) => {
+type Props = { 
+  onSave: (values: CommentFormValues) => void; 
+  defaultValue?: string; 
+};
+
+const CommentForm = ({ onSave, defaultValue }: Props) => {
   const classes = useStyles();
 
 	// const dispatch = useDispatch();
@@ -57,7 +61,7 @@ const CommentForm = ({ onSave }: Props) => {
   } = useForm<CommentFormValues>();
 
   const onSubmit: SubmitHandler<CommentFormValues> = (values: CommentFormValues) => {
-    console.log(values);
+    // console.log(values);
     onSave(values);
   };
 
@@ -70,6 +74,7 @@ const CommentForm = ({ onSave }: Props) => {
           errors={errors} 
           name="name"
           rootClassName={classes.input}
+          defaultValue={defaultValue}
           placeholder="Ecrivez un commentaire..."
         />
 
