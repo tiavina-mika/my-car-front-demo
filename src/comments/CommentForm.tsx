@@ -43,7 +43,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
-const CommentForm = () => {
+
+type Props = { onSave: (values: CommentFormValues) => void };
+const CommentForm = ({ onSave }: Props) => {
   const classes = useStyles();
 
 	// const dispatch = useDispatch();
@@ -56,6 +58,7 @@ const CommentForm = () => {
 
   const onSubmit: SubmitHandler<CommentFormValues> = (values: CommentFormValues) => {
     console.log(values);
+    onSave(values);
   };
 
   return (

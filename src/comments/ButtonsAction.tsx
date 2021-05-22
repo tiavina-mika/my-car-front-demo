@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import { Box, Button } from '@material-ui/core';
 
 import CommentForm from './CommentForm';
+import { CommentFormValues } from '../types/comment';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,13 +27,17 @@ const useStyles = makeStyles((theme: Theme) =>
 type Props = { id: string };
 const ButtonActions = ({ id }: Props) => {
   const classes = useStyles();
+  const [open, setOpen] = useState<boolean>(false);
+
+  const toggle = () => setOpen(prev => !prev);
 
   const handleDelete = (id: string) => {
     console.log(id);
   }
 
-  const handleEdit = (id: string) => {
-    console.log(id);
+  const handleEdit = (values: CommentFormValues) => {
+    console.log(id, values);
+    toggle();
   }
 
   return (
@@ -45,14 +50,15 @@ const ButtonActions = ({ id }: Props) => {
           Supprimer
         </Button>
         <Button
-          onClick={() => handleEdit(id)}
+          // onClick={() => handleEdit(id)}
+          onClick={toggle}
           className={classes.button}
         >
           Modifier
         </Button>
       </Box>
 
-      <CommentForm />
+      {open && <CommentForm onSave={handleEdit} />}
     </Box>
   );
 }
