@@ -51,7 +51,7 @@ const Car = ({ car, className }: Props) => {
         image={car.image}
         title="Contemplative Reptile"
       />
-        <CardContent>
+        <CardContent style={{ paddingBottom: 10 }}>
           <Box display="flex" justifyContent="space-between">
             <Box>
               <Typography gutterBottom variant="h6" component="h6">
@@ -64,10 +64,10 @@ const Car = ({ car, className }: Props) => {
             <Box 
               className={classes.comment}
               display="flex"
-              alignItems="center"
+              alignItems="flex-start"
             >
             <Button size="small" color="primary" onClick={toggle}>
-              Commentaires {car.comments && car.comments.length}
+              Commentaires ({car.comments ? car.comments.length : 0})
             </Button>
             </Box>
           </Box>
@@ -85,11 +85,11 @@ const Car = ({ car, className }: Props) => {
             ))}
           </Box>
         </CardContent>
-      <CardActions>
-          {open && (
-            <Comments comments={car.comments} onAdd={addComment} />
-          )}
-      </CardActions>
+        {open && (
+          <CardActions>
+                <Comments comments={car.comments} onAdd={addComment} />
+          </CardActions>
+        )}
     </Card>
   );
 }
