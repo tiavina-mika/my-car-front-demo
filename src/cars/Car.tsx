@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 
-
 type Props = { car: CarType; className?: string };
+
 const Car = ({ car, className }: Props) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
